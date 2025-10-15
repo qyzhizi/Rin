@@ -1,5 +1,6 @@
 import { $ } from "bun"
 import { readdir } from "node:fs/promises"
+import { join } from "node:path";
 import stripIndent from 'strip-indent'
 import { fixTopField, getMigrationVersion, isInfoExist, updateMigrationVersion } from "./fix-top-field"
 
@@ -71,9 +72,8 @@ type D1Item = {
     version: string,
     created_at: string,
 }
-console.log(`-------------start---------------`)
+
 const { exitCode, stderr, stdout } = await $`bunx wrangler d1 create ${DB_NAME}`.quiet().nothrow()
-console.log(`----------------------------`)
 if (exitCode !== 0) {
     if (!stderr.toString().includes('already exists')) {
         console.error(`Failed to create D1 "${DB_NAME}"`)
@@ -110,7 +110,8 @@ const migrationVersion = await getMigrationVersion(typ, DB_NAME);
 const isInfoExistResult = await isInfoExist(typ, DB_NAME);
 
 try {
-    const files = await readdir("./server/sql", { recursive: false })
+    const sqlDir = join(import.meta.dir, "../server/sql");
+    const files = await readdir(sqlDir, { recursive: false });
     const sqlFiles = files
         .filter(name => name.endsWith('.sql'))
         .filter(name => {
