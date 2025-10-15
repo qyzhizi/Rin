@@ -93,4 +93,5 @@ jobs:
         run: |
           echo "🏗️ Running migrator..."
           bun --cwd server -e "console.log(import.meta.resolve('strip-indent'))"
+          bun build --cwd server src/_worker.ts --outdir dist --target=node
           bun run  --cwd server  ./../scripts/migrator.ts
