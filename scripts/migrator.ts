@@ -38,10 +38,12 @@ const jwtSecret = env("JWT_SECRET")
 const githubClientId = env("RIN_GITHUB_CLIENT_ID")
 const githubClientSecret = env("RIN_GITHUB_CLIENT_SECRET")
 
+const _workerDir = join(import.meta.dir, "../server/src/_worker.ts");
+
 Bun.write('wrangler.toml', stripIndent(`
 #:schema node_modules/wrangler/config-schema.json
 name = "${WORKER_NAME}"
-main = "server/src/_worker.ts"
+main = "${_workerDir}"
 compatibility_date = "2024-05-29"
 # compatibility_flags = ["nodejs_compat"]
 node_compat = true
@@ -121,7 +123,7 @@ try {
         .sort();
     console.log("migration_version:", migrationVersion, "Migration SQL List: ", sqlFiles)
     for (const file of sqlFiles) {
-        await $`bunx wrangler d1 execute ${DB_NAME} --remote --file ./server/sql/${file} -y`
+        await $`bunx wrangler d1 execute ${DB_NAME} --remote --file ${sqlDir}/${file} -y`
         console.log(`Migrated ${file}`)
     }
     if (sqlFiles.length === 0) {
