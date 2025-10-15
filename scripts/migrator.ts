@@ -38,8 +38,8 @@ const jwtSecret = env("JWT_SECRET")
 const githubClientId = env("RIN_GITHUB_CLIENT_ID")
 const githubClientSecret = env("RIN_GITHUB_CLIENT_SECRET")
 
-// const _workerDir = join(import.meta.dir, "../server/src/_worker.ts");
-const _workerDir = join(import.meta.dir, "../server/dist/_worker.js");
+const _workerDir = join(import.meta.dir, "../server/src/_worker.ts");
+// const _workerDir = join(import.meta.dir, "../server/dist/_worker.js");
 
 Bun.write('wrangler.toml', stripIndent(`
 #:schema node_modules/wrangler/config-schema.json
