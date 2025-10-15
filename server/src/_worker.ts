@@ -1,5 +1,5 @@
-import { DOMParser as XDOMParser } from '@xmldom/xmldom';
-globalThis.DOMParser = XDOMParser;
+// import { DOMParser as XDOMParser } from '@xmldom/xmldom';
+// globalThis.DOMParser = XDOMParser;
 
 import { drizzle, DrizzleD1Database } from "drizzle-orm/d1";
 import { Elysia } from "elysia";
