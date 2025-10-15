@@ -1,8 +1,8 @@
-if (!globalThis.DOMParser) {
-  const { DOMParser } = await import('@xmldom/xmldom');
-  // @ts-ignore
-  globalThis.DOMParser = DOMParser;
-}
+// if (!globalThis.DOMParser) {
+//   const { DOMParser } = await import('@xmldom/xmldom');
+//   // @ts-ignore
+//   globalThis.DOMParser = DOMParser;
+// }
 
 import { drizzle, DrizzleD1Database } from "drizzle-orm/d1";
 import { Elysia } from "elysia";
