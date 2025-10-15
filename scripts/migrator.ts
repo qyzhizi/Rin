@@ -70,6 +70,7 @@ WEBHOOK_URL = "${WEBHOOK_URL}"
 RSS_TITLE = "${RSS_TITLE}"
 RSS_DESCRIPTION = "${RSS_DESCRIPTION}"
 AWS_SDK_JS_RUNTIME = "node"
+WRANGLER_BUILD_CONDITIONS= "workerd,worker npx wrangler dev"
 
 [placement]
 mode = "smart"
