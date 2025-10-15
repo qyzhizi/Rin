@@ -1,8 +1,6 @@
-if (!globalThis.DOMParser) {
-  const { DOMParser } = await import('@xmldom/xmldom');
-  // @ts-ignore
-  globalThis.DOMParser = DOMParser;
-}
+import { DOMParser as XDOMParser } from '@xmldom/xmldom';
+globalThis.DOMParser = XDOMParser;
+
 import { $ } from "bun"
 import { readdir } from "node:fs/promises"
 import { join } from "node:path";
